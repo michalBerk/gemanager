@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Inventory Management System</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+            font-family: tahoma;
+        }
+
+        #sideMenu {
+            position: fixed;
+            bottom: 0; /* Start from the bottom of the header menu */
+            left: 0;
+            height: 92%; /* Calculate the height excluding the header menu */
+            width: 20%;
+            background-color: #E4E4E4;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2); /* Add shadow effect on the right */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        #buttons {
+            margin-top: 16%;
+        }
+
+        button {
+            width: 100%;
+            height: 3em;
+            margin-bottom: 20px;
+            border-radius: 30em;
+            font-size: 15px;
+            font-family: inherit;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #E4E4E4;
+        }
+
+        button::before {
+            content: '';
+            width: 0;
+            height: 3em;
+            border-radius: 30em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(to right, #C5FF78 0%, #C5FF78 100%);
+            transition: .5s ease;
+            display: block;
+            z-index: -1;
+        }
+
+        button:hover::before {
+            width: 18em;
+        }
+
+        #headerMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* Occupy the full width of the page */
+            height: 8%;
+            background-color: #F5F5F5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Align items to the left and right edges */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect at the bottom */
+        }
+
+        #headerMenu img {
+            height: 80%;
+            margin-left: 20px;
+            object-fit: contain;
+        }
+
+        #headerMenu span {
+            font-weight: bold;
+            margin-right: 50px;
+        }
+
+        #body {
+            margin-top: 8%;
+            text-align: center;
+            padding: 30px;
+        }
+
+        #action_buttons {
+            display: block;
+            margin-bottom: 20px;
+            padding: 10px;
+            margin-left: 14%;
+        }
+
+        #body button1 {
+          padding: 40px 80px;
+          font-size: 18px;
+          text-transform: uppercase;
+          letter-spacing: 2.5px;
+          margin-right: 10px;
+          font-weight: 500;
+          color: #000000;
+          background-color: #fff;
+          border: none;
+          border-radius: 45px;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease 0s;
+          cursor: pointer;
+          outline: none;
+        }
+
+        #body button1:hover {
+          background-color: #C5FF78;
+          box-shadow: 0px 15px 20px rgba(197, 255, 120, 0.4);
+          color: #000000;
+          transform: translateY(-7px);
+        }
+
+        #body button1:active {
+          transform: translateY(-1px);
+        }
+
+        table {
+            margin: auto;
+            margin-top: 150px;
+            border-collapse: collapse;
+            width: 88%;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #E4E4E4;
+        }
+
+        th {
+            background-color: #C5FF78;
+        }
+    </style>
+</head>
+<body>
+    <div id="sideMenu">
+        <div id="buttons">
+            <button href="#">Home Page</button>
+            <button href="#">Inventory</button>
+            <button href="#">Sales</button>
+        </div>
+    </div>
+    <div id="headerMenu">
+        <img src="logo.png" alt="logo">
+        <span>Alon Netzer</span>
+    </div>
+    <div id="body">
+        <div id="action_buttons">
+            <button1 href="#">Add Diamond</button1>
+            <button1 href="#">Edit Diamond</button1>
+            <button1 href="#">Sell Diamond</button1>
+        <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Diamond ID</th>
+                    <th>Name</th>
+                    <th>Carat</th>
+                    <th>Color</th>
+                    <th>Clarity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your diamond data rows will go here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
