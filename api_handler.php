@@ -76,7 +76,7 @@ function insert_diamond_details($report_data, $report_number) {
         $stmt->bindParam(':symmetry', $report_data['symmetry']);
         $stmt->bindParam(':image', $report_data['links']['image']);
         // Set the remaining columns to empty values for now
-        $status = '';
+        $status = 'Available';
         $cos_cust = '';
         $sold_cust = '';
         $inserted_date = date('Y-m-d');
