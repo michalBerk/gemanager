@@ -1,21 +1,13 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #F5F5F5;
+    background-color:#E4E4E4 ;
     font-family: tahoma;
 }
 
-#sideMenu {
-    position: fixed;
-    bottom: 0; /* Start from the bottom of the header menu */
-    left: 0;
-    height: 92%; /* Calculate the height excluding the header menu */
-    width: 20%;
-    background-color: #E4E4E4;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2); /* Add shadow effect on the right */
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
+.col-lg-2 {
+    background-color:rgba(245, 245, 245, 0.75);
+    margin-top: 0.2%;
 }
 
 #buttons {
@@ -149,7 +141,10 @@ height: 100vh;
 }
 h1{
     text-align: center;
-    font:700 2rem/normal Poppins;
+    font-family: tahoma;
+    margin-top: 4%;
+    font-weight: bold;
+    font-size: calc(12px + 1.5vw); /* Adjust the base and factor as needed */
 
 }
 /*Add dimaond- pop up window- css*/ 
@@ -173,8 +168,8 @@ h1{
     transform: translate(-50%, -50%);
     padding: 20px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     z-index: 1001;
 }
 .inputGroup {
@@ -194,7 +189,9 @@ width: 100%;
 margin-right: 5%;
 }
 h2{
-font-family: "Kanit", sans-serif;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-style: initial;
+margin-top: 2%;
 }
 .pButton {
 padding: 1.3em 3em;
