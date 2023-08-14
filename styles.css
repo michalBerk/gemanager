@@ -148,7 +148,7 @@ h1{
 
 }
 /*Add dimaond- pop up window- css*/ 
-#popupContainer {
+.popupContainer {
     display: none;
     position: fixed;
     top: 0;
@@ -159,7 +159,7 @@ h1{
     z-index: 1000; 
 }
 
-#popupContent {
+.popupContent {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -175,7 +175,7 @@ h1{
 .inputGroup {
 font-family: 'Segoe UI', sans-serif;
 margin: 1em 0 1em 0;
-max-width: 800px;
+max-width: 1000px;
 }
 
 .inputGroup input {
@@ -190,7 +190,6 @@ margin-right: 5%;
 }
 h2{
 font-family: Verdana, Geneva, Tahoma, sans-serif;
-font-style: initial;
 margin-top: 2%;
 }
 .pButton {
@@ -279,4 +278,45 @@ transform: translateY(-1px);
 .cta:active {
     transform: scale(0.95);
     }
+.coolinput {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: static;
+    max-width: 240px;
+    }
+
+.coolinput label {
+    font-size: 1rem;
+    color: black;
+    font-weight: 700;
+    position: relative;
+    top: 0.4rem;
+    margin: 0 0 0 7px;
+    padding: 0 2px;
+    font-family:'Segoe UI', sans-serif;
+    width: fit-content;
+}
+.coolinput input.input {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #C5FF78 solid;
+    border-radius: 5px;
+    background: #f2f0f0;
+}
+
+.coolinput input[type=text].input:focus {
+    outline: none;
+}
+.coolinput select {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #C5FF78 solid;
+    border-radius: 5px;
+    background: #f2f0f0;
+}
+select#status option {
+    font-style:inherit;
+    font-size: 11pt;
+ }   
         

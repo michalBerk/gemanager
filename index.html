@@ -6,7 +6,7 @@
     <title>Diamond Inventory Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"-->
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
     </style>
@@ -31,10 +31,10 @@
                 <main>
                     <!--h1>Home Dashboard</h1-->
                     <div id="action_buttons">
-                        <button1 id="popupButton">Add Diamond</button1>
+                        <button1 id="AddPopupButton">Add Diamond</button1>
                         <!--This is the Pop up window for adding diamond-->
-                        <div id="popupContainer">
-                            <div id="popupContent"> 
+                        <div class="popupContainer" id="AddContainer">
+                            <div class="popupContent"> 
                                 <div style="text-align: center;">
                                     <h2>Enter a certificat number</h2>
                                     <div style="margin: auto; display: flex; justify-content: center; align-items: center;">
@@ -57,7 +57,86 @@
                                 </div>
                             </div>
                         </div>
-                        <button1 href="#">Edit Diamond</button1>
+                        <button1 id="editpopupButton">Edit Diamond</button1>
+                        <!--This is the Pop up window for Edit Diamond-->
+                        <div class="popupContainer" id="EditContainer">
+                            <div class="popupContent">
+                                <h2 style="text-align: center;">Diamond details</h2> 
+                                <form class= "container" style="display:flex;gap:calc(20px + 1.5vw);margin-left: 3%; margin-right: 3%;">
+                                    <div class="leftSide">
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Certification Number:</label>
+                                            <input type="text" id="cid" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Shape:</label>
+                                            <input type="text" id="shape" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Measurements:</label>
+                                            <input type="text" id="Measurements" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Weight:</label>
+                                            <input type="text" id="Weight" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Color:</label>
+                                            <input type="text" id="Color" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Clarity:</label>
+                                            <input type="text" id="Clarity" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Cut:</label>
+                                            <input type="text" id="Cut" class="input">
+                                        </div>
+                                </div>
+                                    <div class="rightSide">
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Polish:</label>
+                                            <input type="text" id="Polish" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Symmetry:</label>
+                                            <input type="text" id="Symmetry" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Price/Carat:</label>
+                                            <input type="number" step="0.1" min=0 id="Price" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="text">Total price:</label>
+                                            <input type="number" step="0.1" id="TotalPrice"  min=0 class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="input" class="date"> Date:</label>
+                                            <input type="date" id="Date" class="input">
+                                        </div>
+                                        <div class="coolinput">
+                                            <label for="status">Status</label>
+                                            <select name="status" id="status">
+                                                <option value="Available">Available</option>
+                                                <option value="Consignment">Consignment</option>
+                                                <option value="shipped">shipped</option>
+                                                <option value="Sold">Sold</option>
+                                              </select>
+                                            <!--label for="input" class="text">status:</label>
+                                            <input type="text" id="status" class="input"-->
+                                        </div>
+                                </div>
+                                <div style="border-style: solid; margin-left: auto;width: 40%; flex-direction: column;">
+                                    Diamond picture will be here                                  
+                    
+                                </div>
+                                <div style="border-style: solid; margin-left: auto;width: 40%; ">
+                                    Diamond picture will be here                                  
+                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                         <button1 href="#">Sell Diamond</button1>
                     </div>
                     <table>
@@ -88,18 +167,22 @@
     </div>
 </body>
 <script>
-    const popupButton = document.getElementById('popupButton');
-    const popupContainer = document.getElementById('popupContainer');
+    const popupAddButton = document.getElementById('AddPopupButton');
+    const popupEditButton = document.getElementById('editpopupButton');
+    const popupEditContainer = document.getElementById('EditContainer');
+    const popupAddContainer = document.getElementById('AddContainer');
     const closeButton = document.getElementById('closeButton');
     const getButton = document.getElementById('getButton');
     const submitButton = document.getElementById('submitButton');
-
-    popupButton.addEventListener('click', () => {
-        popupContainer.style.display = 'block';
+   
+    popupAddButton.addEventListener('click', () => {
+        popupAddContainer.style.display = 'block';
     });
-
+    popupEditButton.addEventListener('click', () => {
+        popupEditContainer.style.display = 'block';
+    });
     closeButton.addEventListener('click', () => {
-        popupContainer.style.display = 'none';
+        popupAddContainer.style.display = 'none';
         hideSubmitButton(); // Call the function to hide the "Submit" button
         getButton.disabled = false;
     });
@@ -125,6 +208,5 @@
         getButton.disabled = true; // Disable the main button
 
     });
-
 </script>
 </html>
