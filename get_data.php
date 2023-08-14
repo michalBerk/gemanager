@@ -1,40 +1,70 @@
 <?php
-// Establish a connection to your MySQL database
-$host = 'localhost';
-$username = 'ismichalbek_user';
-$password = 'w06sa!TUt-u';
-$database = 'ismichalbek_diamond_inventory';
+function fetch_diamond_details($api_key, $report_number) {
+    $url = 'https://api.reportresults.gia.edu/';
+    $headers = [
+        'Authorization: ' . $api_key,
+        'Content-Type: application/json',
+    ];
+    $query = '
+    {
+      getReport(report_number: "' . $report_number . '") {
+        results {
+          ... on DiamondGradingReportResults {
+            shape_and_cutting_style
+            measurements
+            carat_weight
+            color_grade
+            clarity_grade
+            cut_grade
+            polish
+            symmetry
+          }
+          ... on IdentificationReportResults {
+            weight
+            measurements
+            shape
+            cutting_style
+            color
+          }
+        }
+        links {
+          image
+          polished_image
+          polished_video
+        }
+      }
+    }';
 
-$connection = mysqli_connect($host, $username, $password, $database);
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => json_encode(['query' => $query]),
+    ));
 
-// Check connection
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
+    $response = curl_exec($curl);
+    curl_close($curl);
+
+    $diamond_data = json_decode($response, true);
+    return $diamond_data;
 }
 
-// Fetch data from the database
-$query = "SELECT * FROM diamonds";
-$result = mysqli_query($connection, $query);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $api_key = 'd14d5d91-f293-470e-991a-cf08c76df37f'; // Your API key
+    $report_number = $_POST['report_number'];
 
-// Loop through the results and populate the table
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    echo "<td>{$row['diamond_id']}</td>";
-    echo "<td>{$row['shape_cutting_style']}</td>";
-    echo "<td>{$row['measurements']}</td>";
-    echo "<td>{$row['weight']}</td>";
-    echo "<td>{$row['color']}</td>";
-    echo "<td>{$row['clarity']}</td>";
-    echo "<td>{$row['cut']}</td>";
-    echo "<td>{$row['polish']}</td>";
-    echo "<td>{$row['symmetry']}</td>";
-    echo "<td>{$row['inserted_date']}</td>";
-    echo "<td>{$row['price_per_carat']}</td>";
-    echo "<td>{$row['total_price']}</td>";
-    echo "<td>{$row['status']}</td>";
-    echo "</tr>";
+    // Fetch diamond details using the API function
+    $diamond_data = fetch_diamond_details($api_key, $report_number);
+
+    if ($diamond_data && isset($diamond_data['data']['getReport']['results'])) {
+        $report_data = $diamond_data['data']['getReport']['results'];
+
+        // Echo the diamond data as JSON response
+        echo json_encode($report_data);
+    } else {
+        echo json_encode(['error' => 'Failed to fetch data from the API']);
+    }
 }
-
-// Close the database connection
-mysqli_close($connection);
 ?>
