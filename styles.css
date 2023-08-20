@@ -107,17 +107,26 @@ table {
     width: 95%;
     margin-top: 5%;
     text-align: center;
+    border-radius: 50px;
 }
 
 th, td {
-    padding: 10px;
+    padding: 5px;
     border-bottom: 1px solid #E4E4E4;
 }
 
+td {
+    font-size: 12.5px;
+}
+
 th {
+    font-size: 13.5px;
     background-color: #C5FF78;
 }
 
+#diamondTable tbody {
+    background-color: #f0f7d7 !important;
+} 
 .container-fluid{
     display: flex;
     align-items: center;
